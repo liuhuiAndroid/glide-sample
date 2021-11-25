@@ -36,10 +36,9 @@ class MainActivity : AppCompatActivity() {
             .placeholder(R.mipmap.ic_launcher_round)
             .error(R.mipmap.ic_launcher)
             // .override(Target.SIZE_ORIGINAL) // OOM risk
-            .skipMemoryCache(false) // 禁用内存缓存
+            .skipMemoryCache(true) // 禁用内存缓存
             .diskCacheStrategy(DiskCacheStrategy.NONE) // 禁用硬盘缓存
             .transform(BlurTransformation(), GrayscaleTransformation())
-
 
         Glide.with(this).load(imageUrl).apply(options)
             .listener(object : RequestListener<Drawable> {
