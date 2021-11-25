@@ -22,7 +22,8 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var image_view: AppCompatImageView
     val imageUrl =
-        "https://imgsa.baidu.com/forum/w%3D580/sign=b783c82d22a446237ecaa56aa8237246/aa66a7ec8a136327b8717064938fa0ec09fac707.jpg"
+        "https://www.baidu.com/img/bd_logo1.png"
+        // "https://imgsa.baidu.com/forum/w%3D580/sign=b783c82d22a446237ecaa56aa8237246/aa66a7ec8a136327b8717064938fa0ec09fac707.jpg"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +37,10 @@ class MainActivity : AppCompatActivity() {
             .placeholder(R.mipmap.ic_launcher_round)
             .error(R.mipmap.ic_launcher)
             // .override(Target.SIZE_ORIGINAL) // OOM risk
-            .skipMemoryCache(true) // 禁用内存缓存
+            .skipMemoryCache(false) // 禁用内存缓存
             .diskCacheStrategy(DiskCacheStrategy.NONE) // 禁用硬盘缓存
             .transform(BlurTransformation(), GrayscaleTransformation())
+            .centerCrop()
 
         Glide.with(this).load(imageUrl).apply(options)
             .listener(object : RequestListener<Drawable> {
